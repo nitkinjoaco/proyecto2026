@@ -1,3 +1,5 @@
+//abrimos eel servidor localhost y creamos dos apis que nos permiten saber datos actuales e historicos 
+
 import express from "express";
 import { obtenerUltima, obtenerHistorico } from "../storage.ts";
 
