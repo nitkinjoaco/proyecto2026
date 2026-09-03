@@ -44,7 +44,7 @@ Fase 2 en curso. **El backend ya funciona de punta a punta con datos simulados:*
 
 ## Stack
 
-- **Hardware:** Arduino Uno (C/C++ vía Arduino IDE), simulaciones en Tinkercad
+- **Hardware:** Arduino Uno (C/C++ vía PlatformIO), simulación en Wokwi
 - **Backend:** Node.js 24 + TypeScript 7 (Express para la API, `fs` para persistencia, `serialport` para leer el Arduino — todavía sin instalar)
 - **Frontend:** HTML + CSS (sin framework por ahora)
 - **Formato de intercambio:** CSV por el serial, JSON por HTTP
@@ -87,8 +87,12 @@ proyecto2026/
 │       └── rutas.ts        # Express: /api/actual, /api/historico y el estático de front/
 ├── datos/                  # lo genera el backend, está en .gitignore
 │   └── mediciones.jsonl
-└── firmware/
-    └── terrasense.ino      # Sketch del Arduino — todavía vacío
+└── firmware/               # proyecto PlatformIO, se abre aparte en VS Code
+    ├── platformio.ini      # placa, framework y las 4 librerías
+    ├── wokwi.toml          # rutas del binario para el simulador
+    ├── diagram.json        # el circuito que simula Wokwi
+    └── src/
+        └── main.cpp        # el código del Arduino Uno
 ```
 
 ### Lo que falta agregar
@@ -129,24 +133,27 @@ Desde que existe la API, esta carpeta ya no se abre con doble clic: el backend l
 
 ### Hardware (`firmware/`)
 
-Todo el código del Arduino vive en un solo sketch. El Arduino IDE exige que el `.ino` se llame igual que la carpeta que lo contiene, así que el nombre del archivo no es opcional.
+Todo el código del Arduino vive en `src/main.cpp`. Ya no es un `.ino` suelto: `firmware/` es un proyecto PlatformIO, con su configuración de placa y sus librerías declaradas (ver [Firmware y simulación](#firmware-y-simulación-platformio--wokwi)).
 
 ```text
 firmware/
-└── terrasense.ino    # Sketch del Arduino Uno — HOY ESTÁ VACÍO (0 bytes)
-                      # El código real todavía vive en las simulaciones de Tinkercad
+├── platformio.ini
+├── wokwi.toml
+├── diagram.json
+└── src/
+    └── main.cpp      # los 6 sensores y la línea que sale por serial
 ```
 
-Lo que ese archivo tiene que terminar conteniendo, y cómo se conecta con el resto:
+Cómo se conecta con el resto:
 
 ```text
-                          firmware/terrasense.ino
+                          firmware/src/main.cpp
                           ┌──────────────────────────────┐
-  A_  Humedad de suelo ──►│                              │
-  A_  LDR (luz)        ──►│  setup()                     │
-  A_  pH (PH-4502C)    ──►│    Serial.begin(9600)        │
-  D_  DS18B20 (OneWire)──►│    dht.begin() / sensors...  │
-  D_  DHT11            ──►│                              │
+  A0  Humedad de suelo ──►│                              │
+  A1  LDR (luz)        ──►│  setup()                     │
+  A2  pH (PH-4502C)    ──►│    Serial.begin(9600)        │
+  D2  DS18B20 (OneWire)──►│    dht.begin() / sensors...  │
+  D3  DHT11            ──►│                              │
                           │  loop()                      │
                           │    leer los 6 valores        │
                           │    Serial.println(linea) ────┼──► USB / serial ──► back/
@@ -154,7 +161,44 @@ Lo que ese archivo tiene que terminar conteniendo, y cómo se conecta con el res
                           └──────────────────────────────┘
 ```
 
-El formato exacto de `linea` ya está definido: es el [contrato del mensaje](#contrato-del-mensaje), y el mock y el parser del backend ya lo implementan. Lo que falta del lado del firmware es escribir el sketch que produzca esa misma línea leyendo los sensores reales. Los pines concretos (`A_`, `D_`) están [pendientes de documentar](#pinout).
+El formato exacto de `linea` ya está definido: es el [contrato del mensaje](#contrato-del-mensaje), y el mock y el parser del backend ya lo implementan. El código que produce esa línea ya está escrito y compila; lo que falta es [calibrarlo contra los sensores reales](#hardware-1).
+
+### Firmware y simulación (PlatformIO + Wokwi)
+
+El firmware dejó de ser un `.ino` suelto: `firmware/` es ahora un proyecto **PlatformIO**, así se compila desde VS Code y se simula sin tocar el hardware.
+
+```text
+firmware/
+├── platformio.ini    # placa (uno), framework (arduino) y las 4 librerías
+├── wokwi.toml        # le dice al simulador dónde están el .hex y el .elf
+├── diagram.json      # el circuito que simula Wokwi (sensores y cableado)
+├── .gitignore        # ignora .pio/ y la config de VS Code con rutas absolutas
+└── src/
+    └── main.cpp      # el código del Arduino Uno
+```
+
+**Abrir la carpeta `firmware/` en VS Code, no la raíz del repo.** PlatformIO busca el `platformio.ini` en la raíz del workspace: si abrís `proyecto2026/` no lo encuentra y no reconoce el proyecto.
+
+Extensiones necesarias:
+
+- **PlatformIO IDE** — compila, sube a la placa y abre el monitor serie.
+- **Wokwi for VS Code** — el simulador. Pide una licencia, que para uso personal/educativo es gratuita (se saca desde la propia extensión).
+
+Las 4 librerías (`DHT sensor library`, `Adafruit Unified Sensor`, `OneWire`, `DallasTemperature`) no están versionadas: PlatformIO las baja sola la primera vez que compilás y las deja en `.pio/libdeps/uno/`.
+
+Flujo de trabajo:
+
+```bash
+pio run                 # compilar → genera .pio/build/uno/firmware.hex y .elf
+pio run -t upload       # compilar y cargar en el Uno real
+pio device monitor      # monitor serie a 9600 baudios
+```
+
+Para simular: `F1` → **Wokwi: Start Simulator**.
+
+> **Hay que compilar antes de simular.** Wokwi no lee `main.cpp`: ejecuta el binario que dejó PlatformIO en `.pio/build/uno/`. Si cambiás el código y simulás sin correr `pio run`, vas a estar viendo la versión anterior — o un error de "firmware not found" si nunca compilaste.
+
+El `main.cpp` tiene una constante `MODO_LEGIBLE` que elige el formato de salida: en `true` imprime cada variable con su nombre y unidad (para leer en el monitor serie), en `false` emite la línea CSV del [contrato del mensaje](#contrato-del-mensaje) que espera el backend.
 
 ---
 
@@ -191,15 +235,16 @@ Ninguna. El dispositivo solo mide y envía; no actúa sobre el entorno.
 
 ### Pinout
 
-> Pendiente de documentar. La cantidad de pines está definida (3 analógicos + 2 digitales), pero falta fijar en este README a qué pin concreto va cada sensor. Completar con los valores usados en las simulaciones de Tinkercad.
+Fijado en `firmware/src/main.cpp`. Si cambiás un pin acá, cambialo también allá.
 
-| Componente | Pin |
-| :--- | :--- |
-| Humedad de suelo | A_ |
-| LDR | A_ |
-| pH (PH-4502C) | A_ |
-| DS18B20 | D_ |
-| DHT11 | D_ |
+| Componente | Pin | Nota |
+| :--- | :--- | :--- |
+| Humedad de suelo | A0 | |
+| LDR | A1 | divisor con resistencia de 10 kΩ |
+| pH (PH-4502C) | A2 | |
+| DS18B20 | D2 | **pull-up de 4.7 kΩ entre datos y 5V** |
+| DHT11 | D3 | |
+| LED de actividad | D13 | el LED que ya trae la placa, parpadea en cada medición |
 
 ### Lista de compras
 
@@ -264,7 +309,7 @@ Ejemplo del objeto ya armado del lado de Node (el `timestamp` no viene por el ca
 
 ### Trampas conocidas del serial en Windows
 
-- **El puerto COM lo puede abrir un solo programa a la vez.** Si el Monitor Serie del Arduino IDE está abierto, Node falla con `Access denied`. Es la causa número uno de "no funciona": cerrar el monitor.
+- **El puerto COM lo puede abrir un solo programa a la vez.** Si el monitor serie (`pio device monitor`) está abierto, Node falla con `Access denied`. Es la causa número uno de "no funciona": cerrar el monitor.
 - **El número de COM cambia** según el puerto USB donde se enchufe la placa. No hardcodearlo: leerlo de una variable de entorno o listar los puertos disponibles al arrancar.
 - **Abrir el puerto resetea el Arduino** (por DTR). Las primeras líneas pueden ser basura del arranque: descartar lo que no parsee en vez de crashear.
 - **Si se desconecta el cable, el proceso Node no muere solo.** Hay que manejar el evento de error/cierre y reintentar, o el backend queda vivo pero mudo.
@@ -433,11 +478,67 @@ Las tres últimas son las que le dan sentido a definir las `interface` de `back/
 
 ### Hardware
 
-1. Abrir el sketch en el Arduino IDE.
-2. Instalar las librerías `DHT sensor library`, `OneWire` y `DallasTemperature`.
-3. Seleccionar placa **Arduino Uno** y el puerto COM correspondiente.
-4. Subir el programa y abrir el monitor serie a 9600 baudios.
-5. **Cerrar el monitor serie** antes de levantar el backend, o Node no va a poder abrir el puerto.
+Se trabaja con la carpeta `firmware/` abierta como workspace en VS Code, no la raíz del repo (ver [Firmware y simulación](#firmware-y-simulación-platformio--wokwi)).
+
+#### Antes de tocar la placa: dos cambios en el código
+
+1. **`TIPO_DHT` va en `DHT11`.** Está en `DHT22` porque es lo que simula Wokwi. Contra un DHT11 real el protocolo no coincide, `readHumidity()` y `readTemperature()` devuelven `nan` y las dos variables de aire salen en `-1`. El DHT11 además devuelve enteros: vas a ver `22.00` y `61.00` sin decimales, y eso es normal (su precisión es ±2 °C y ±5 %).
+2. **`MODO_LEGIBLE` en `true`** hasta terminar de calibrar. Recién al final se pasa a `false`.
+
+#### Armado
+
+Además de los sensores hacen falta dos resistencias que no son opcionales:
+
+- **4.7 kΩ entre el pin de datos del DS18B20 (D2) y 5V.** Sin el pull-up el bus OneWire no levanta y `getTempCByIndex(0)` devuelve `-127`, que el código convierte en `-1`. Es el error más común con este sensor.
+- **10 kΩ para el divisor del LDR.** Acá importa la orientación: las constantes `LUZ_OSCURO = 1000` y `LUZ_CLARO = 100` asumen que más luz da lectura más baja, que es lo que pasa con el LDR a GND y la de 10 kΩ a 5V. Si queda al revés el porcentaje sale invertido — se da vuelta el divisor o se intercambian las dos constantes.
+
+**Alimentación:** los 5 sensores suman ~18 mA y el USB entrega 500 mA. Alcanza de sobra, no hace falta fuente externa.
+
+#### Subir el programa
+
+```bash
+pio device list          # ver qué COM agarró la placa
+pio run -t upload        # compilar y subir
+pio device monitor       # monitor serie a 9600 baudios
+```
+
+`upload` detecta el puerto solo. Si falla, se fija a mano en `platformio.ini`:
+
+```ini
+upload_port = COM3
+```
+
+Si Windows no reconoce la placa es el driver: los Uno originales usan el ATmega16U2 y andan de una, los clones usan **CH340** y hay que instalarlo aparte. Aparece en el Administrador de dispositivos como "USB-SERIAL CH340".
+
+#### Calibración
+
+Los valores de calibración del código son de ejemplo. Con `MODO_LEGIBLE = true` se anota lo que imprime el monitor y se reemplazan:
+
+| Constante | Cómo obtenerla |
+| :--- | :--- |
+| `SUELO_SECO` | lectura del sensor al aire |
+| `SUELO_MOJADO` | lectura sumergido hasta la línea marcada, **no más arriba** |
+| `LUZ_OSCURO` / `LUZ_CLARO` | lectura tapando el LDR y con la luz de la sala |
+| `PH_V_NEUTRO` / `PH_PENDIENTE` | con el kit de buffers, ver abajo |
+
+El sensor de suelo es capacitivo (v1.2): seco lee **alto** y mojado lee **bajo**. La dirección del código ya contempla eso.
+
+Para el pH se imprime el voltaje crudo en vez del pH, se mide en buffer 6.86 y en 4.01, y se calcula:
+
+```text
+PH_PENDIENTE = (volt_en_4.01 - volt_en_6.86) / (6.86 - 4.01)
+PH_V_NEUTRO  = volt_en_6.86 - 0.14 * PH_PENDIENTE
+```
+
+Entre medición y medición hay que **enjuagar la sonda con agua destilada**. Y la sonda no se guarda al aire: va en solución KCl o se arruina. Es el componente más caro del proyecto.
+
+> **Detalle del ADC:** el Uno tiene un solo conversor multiplexado entre A0, A1 y A2. Con fuentes de alta impedancia como el divisor del LDR queda carga residual de la lectura anterior y contamina el valor. Si los números saltan raro, se lee dos veces y se descarta la primera: `analogRead(pin); delay(10); return analogRead(pin);`
+
+#### Conectar el backend
+
+Con los 6 valores ya calibrados: `MODO_LEGIBLE = false`, `pio run -t upload` de nuevo, y la placa pasa a emitir la línea CSV del [contrato del mensaje](#contrato-del-mensaje).
+
+**Cerrar el monitor serie antes de levantar Node.** En Windows el puerto COM es de acceso exclusivo: si `pio device monitor` lo tiene abierto, `serialport` no puede abrirlo y el backend falla con "Access denied" (ver [Trampas conocidas del serial en Windows](#trampas-conocidas-del-serial-en-windows)).
 
 ---
 
@@ -450,8 +551,8 @@ Las tres últimas son las que le dan sentido a definir las `interface` de `back/
 - `obtenerHistorico()` lee y parsea el `.jsonl` completo en cada request. Sirve para el volumen actual; no para miles de líneas.
 - `back/storage.ts` importa `json` de `node:stream/consumers` y no lo usa. Sacarlo.
 - `back/index.ts` no espera al `guardar()` (es `async` y no se le hace `await`), así que un error de escritura queda como promesa rechazada sin manejar. Como `guardar()` ya atrapa sus propios errores no explota hoy, pero es frágil.
-- El pinout no está documentado (ver [Pinout](#pinout)).
-- `firmware/terrasense.ino` sigue vacío: el código real vive solo en las simulaciones de Tinkercad.
+- Los valores de calibración de `firmware/src/main.cpp` son de ejemplo: hay que medirlos contra los sensores reales antes de darle sentido a los datos (ver [Hardware](#hardware-1)).
+- `TIPO_DHT` está en `DHT22` porque es lo que simula Wokwi. Contra el DHT11 físico hay que cambiarlo o las dos variables de aire salen en `-1`.
 
 ---
 
@@ -512,11 +613,13 @@ Las tres últimas son las que le dan sentido a definir las `interface` de `back/
 
 ### Hardware
 
+- [x] Versionar el firmware (`firmware/`, proyecto PlatformIO — compila y simula en Wokwi)
+- [x] Documentar el pinout definitivo en este README
+- [x] Relevar la alimentación energética (~18 mA en total, alcanza con USB)
 - [ ] Ensamblar el circuito en protoboard
-- [ ] Documentar el pinout definitivo en este README
-- [ ] Escribir el sketch que emita la línea CSV del contrato y verificar lecturas
-- [ ] Relevar la alimentación energética (definir si alcanza con USB o hace falta fuente externa)
-- [ ] Versionar el sketch en `firmware/terrasense.ino` (hoy está vacío)
+- [ ] Cambiar `TIPO_DHT` a `DHT11` y verificar las lecturas de aire
+- [ ] Calibrar los sensores analógicos (suelo, LDR y pH con el kit de buffers)
+- [ ] Pasar `MODO_LEGIBLE` a `false` y conectar el backend por serial
 
 ### Frontend y diseño
 
