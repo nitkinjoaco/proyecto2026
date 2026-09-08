@@ -1,8 +1,0 @@
-# Simulacion en VS Code con la extension "Wokwi for VS Code".
-# Las rutas son las que genera PlatformIO al compilar el entorno [env:uno].
-# Hay que correr "pio run" ANTES de simular: Wokwi simula el binario, no el codigo.
-
-[wokwi]
-version = 1
-firmware = '.pio/build/uno/firmware.hex'
-elf = '.pio/build/uno/firmware.elf'

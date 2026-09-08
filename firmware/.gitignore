@@ -1,9 +1,0 @@
-.pio/
-
-# Los genera PlatformIO al abrir el proyecto y tienen rutas absolutas
-# de la maquina de cada uno, asi que no se versionan.
-# extensions.json si va: recomienda la extension PlatformIO al que clone.
-.vscode/c_cpp_properties.json
-.vscode/launch.json
-.vscode/ipch/
-.vscode/.browse.c_cpp.db*
