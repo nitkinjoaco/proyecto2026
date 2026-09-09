@@ -13,11 +13,11 @@ position: fixed;
 top: 50%;
 left: 50%;
 transform: translate(-50%,  -50%);
-width: 580px;
+width: 387px;
 height: 376px;
 background-color: white;
-opacity: 0.95;
-
+opacity: 0.97;
+margin-left: 108px;
 }
 
 
@@ -28,10 +28,10 @@ left: 50%;
 transform: translate(-50%,  -50%);
 width: 206px;
 height: 375px;
-background-color: black;
+background-color: lightgray;
 margin-left: -188px;
-opacity: 0.1;
-filter: blur(1px);
+opacity: 0.9;
+filter: blur(3px);
 }
 
 .cuadrado3{
@@ -41,8 +41,23 @@ left: 50%;
 transform: translate(-50%,  -50%);
 width: 141px;
 height: 167px;
-background-color: black;
+background-color: lightgray;
+opacity: 0.9;
 margin-left: -188px;
+background: none;       
+  border: none;          
+  box-shadow: none;       
+    
+
+}
+
+#imagen121{
+width: 180px;
+height: 190px;
+margin-left: -13px;
+margin-top: -13px;
+
+
 }
 
 .cuadrado4{
@@ -53,8 +68,13 @@ transform: translate(-50%,  -50%);
 width: 101px;
 height: 11px;
 background-color: black;
-margin-left: -188px;
-margin-top: 110px ;
+margin-left: -175px;
+margin-top: 75px ;
+
+background: none;       
+  border: none;          
+  box-shadow: none;       
+    
 }
 
 
