@@ -47,14 +47,15 @@ margin-left: -188px;
 background: none;       
   border: none;          
   box-shadow: none;       
-  padding: 0;   
+    
 
 }
 
-.imagen121{
-width: 160px;
-height:160px ;
-margin-left: -5px;
+#imagen121{
+width: 180px;
+height: 190px;
+margin-left: -13px;
+margin-top: -13px;
 
 
 }
@@ -67,8 +68,13 @@ transform: translate(-50%,  -50%);
 width: 101px;
 height: 11px;
 background-color: black;
-margin-left: -188px;
-margin-top: 110px ;
+margin-left: -175px;
+margin-top: 75px ;
+
+background: none;       
+  border: none;          
+  box-shadow: none;       
+    
 }
 
 
