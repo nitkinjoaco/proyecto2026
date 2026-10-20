@@ -1,0 +1,175 @@
+.background-cuadrado{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,  -50%);
+    width: 100vw;
+    height: 100vw;
+    background-color: gray;
+    min-height: 100vh;
+    }
+    
+    .cuadrado1{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,  -50%);
+    width: 780px;
+    height: 390px;
+    background-color: #fdedd4;
+    opacity: 0.9;
+    margin-left: -40px;
+    border: 1px solid #fdedd4;
+    }
+    
+    
+   
+    
+    
+    
+   .imagenfondo{
+height: 100%;
+width: 100vw;
+
+   }
+    
+    
+    
+    
+    .cuadrado5{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,  -50%);
+    width: 124px;
+    height: 23px;
+    background-color: black;
+    margin-left: 75px;
+    margin-top: -160px ;
+    background: none;       
+      border: none;          
+      box-shadow: none;  
+    }
+
+    .cambiar{
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        background-color: lightgray;
+      background: none;
+      border: none;
+      box-shadow: none;
+   color: black;
+white-space: nowrap;
+margin-left: -150px;
+
+    }
+    p{
+    font-family: Arial, Helvetica, sans-serif;
+    
+    }
+    .cuadrado6{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,  -50%);
+    width: 283px;
+    height: 23px;
+    background-color: black;
+    margin-left: 50px;
+    margin-top: -80px ;
+    background: none;
+    border: none;
+    box-shadow: none;
+    }
+    
+    .paracontra{
+      background-color: transparent; 
+      border: none;                  
+      border-bottom: 2px solid lightgray; 
+      padding: 5px 0;                
+      font-size: 16px;        
+      outline: none;
+    width: 470px;
+    margin-left: -180px;
+    margin-top: 20px;
+    
+    }
+    
+    input{
+  color: gray;
+font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+
+
+    }
+    
+    .contra{
+      
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        background-color: lightgray;
+      background: none;
+      border: none;
+      box-shadow: none;
+      margin-top: 33px;
+      font-size: 16px;
+      margin-left: -180px;
+      color: gray;
+    }
+    
+   
+
+    
+   
+    
+    .cuadrado8{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,  -50%);
+    width: 100px;
+    height: 60px;
+    background-color: black;
+    margin-left: 235px;
+    margin-top: 135px ;
+    }
+    
+    
+   
+    
+
+  
+    
+    button{
+    color: white;
+    background-color: green;
+    border: none;
+    box-shadow: none;
+    border-radius: 3px;
+    white-space: nowrap;
+    margin-left: -295px;
+    margin-top: -10px;
+    box-shadow: 0 0 0 15px green;
+    width: 130px;
+    }
+    
+    button:hover{
+      filter: brightness(0.8);
+    }
+    
+    .cuadrado8{
+    background: none;
+    
+    
+    }
+    
+
+     
+    
+   
