@@ -328,3 +328,35 @@ font-family: "Inter", sans-serif;
           text-align: center;
         white-space: nowrap;
         }
+
+        .cuadrado14{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,  -50%);
+            width: 10rem;
+            height: 7.8125vh;
+            background-color: black;
+            background: none;
+            box-shadow: none;
+            border: none;
+            margin-left: -34rem;
+            margin-top: -5vh;
+        }
+
+        .medicion{
+            font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+            background-color: lightgray;
+       font-weight: bold;
+          font-size: 50px;
+          color: white;
+         background: none;
+          border: none;
+          box-shadow: none;
+          margin-top: -100px;
+          text-align: center;
+        white-space: nowrap;
+        }
