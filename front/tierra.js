@@ -3,7 +3,7 @@ const { error } = require("node:console");
 fetch("/api/ultima")
 .then((respuesta) => {
     if(!respuesta.ok) {
-        throw new error("Error HTTP: " + respuesta.status);
+        throw new Error("Error HTTP: " + respuesta.status);
     }
     return respuesta.json();
 })
@@ -18,9 +18,19 @@ fetch("/api/ultima")
     console.error("Error:", error)
 });
 
-
-
-
+fetch("/api/historico")
+.then((respuesta) => {
+if(!respuesta.ok) {
+    throw new error("Error HTTP: " + respuesta.status);
+}
+    return respuesta.json();
+})
+.then((datos) => {
+    console.log("Historial", datos);
+})
+.catch ((error) => {
+    console.error("Error:", error)
+});
 
 
 const botoncuadrado = document.querySelector('.boton1');
