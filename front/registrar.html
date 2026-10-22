@@ -12,6 +12,8 @@
 <body>
 
     
+<form id="form"></form>
+
     <section class="background-cuadrado">
         <img id="imagenfondo" src="images/imagenfondo.png" alt="">
     </section>
@@ -28,24 +30,24 @@
     </section>
     <section class="cuadrado6">
         <p class="correo">Correo electronico</p>
-        <input type="email" name="correo"  class="paracorreo" id="email" required>
+        <input type="email" name="correo"  class="paracorreo" id="email" form="form" required>
     </section>
     <section class="cuadrado7">
         <p class="contraseña">Contraseña</p>
-        <input type="password" name="contraseña" class="paracontraseña" id="password" required>
+        <input type="password" name="contraseña" class="paracontraseña" id="password" form="form" required>
     </section>
     <section class="cuadrado8">
-        <button type="button" class="boton">Registrar</button>
+        <button type="submit" class="boton" form="form">Registrar</button>
     </section>
 
     <section class="cuadrado9">
         <p class="nombre">Nombre</p>
-        <input type="name" name="nombre"  class="paranombre" required>
+        <input type="name" name="nombre"  class="paranombre" form="form" required>
     </section>
 
     <section class="cuadrado10">
 <p class="contra">Confirmar contraseña</p>
-<input type="password" name="confirmar contraseña"  class="paracontra" required>
+<input type="password" name="confirmar contraseña"  class="paracontra" form="form" required>
     </section>
 
 <script src="registrar.js">

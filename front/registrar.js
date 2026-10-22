@@ -1,11 +1,11 @@
-async function crearCuenta(email,password) {
+async function crearCuenta(nombre, email, password) {
     try {
         const res = await fetch("/api/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({email, password}),
+            body: JSON.stringify({nombre, email, password}),
         });
         const data = await res.json();
         console.log("Respuesta del servidor:", data);
@@ -21,19 +21,23 @@ async function crearCuenta(email,password) {
         catch (err){
             console.error("Error de red o del servidor:",  err.message);
         }
-        
-    
 }
-crearCuenta("usuario@gmail.com", "123456");
+
 
 document.querySelector("#form").addEventListener("submit", (e) => {
     e.preventDefault();
+    const nombre = document.querySelector("#nombre").value;
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
-    crearCuenta(email,password)
+    const confirmar = document.querySelector("#confirmar").value;
+
+    if (password !== confirmar) {
+        alert("Las contraseñas no coinciden");
+        return;
+    }
+
+    crearCuenta(nombre, email, password)
 });
-
-
 const botoncuadrado = document.querySelector('.boton');
 
 botoncuadrado.addEventListener("click", () => {
