@@ -38,9 +38,3 @@ document.querySelector("#form").addEventListener("submit", (e) => {
 
     crearCuenta(nombre, email, password)
 });
-const botoncuadrado = document.querySelector('.boton');
-
-botoncuadrado.addEventListener("click", () => {
-
-    window.location.href = "gestionar.html"; 
-});

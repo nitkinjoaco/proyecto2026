@@ -3,6 +3,7 @@ import type { Express, Request, Response } from 'express';
 import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 
 const app: Express = express();
+app.use(express.static("C:/Users/51215217/Documents/GitHub/proyecto2026/front"))
 const PUERTO: number = Number(process.env.PORT ?? 3000);
 
 app.use(express.json());
