@@ -1,13 +1,13 @@
 async function crearCuenta(nombre, email, password) {
     try {
-        const res = await fetch("/api/login", {
+        const res = await fetch("http://localhost:3000/api/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({nombre, email, password}),
         });
-        const data = await res.json();
+        const data = await res.text();
         console.log("Respuesta del servidor:", data);
 
         if (res.ok) {
@@ -16,6 +16,7 @@ async function crearCuenta(nombre, email, password) {
         }
         else{
             console.log("No se pudo crear la cuenta:", data.message || res.status);
+            alert(data);
         }
         }
         catch (err){
@@ -35,6 +36,6 @@ document.querySelector("#form").addEventListener("submit", (e) => {
         alert("Las contraseñas no coinciden");
         return;
     }
-
+    console.log("llamando a crearCuenta", nombre, email, password);
     crearCuenta(nombre, email, password)
 });
