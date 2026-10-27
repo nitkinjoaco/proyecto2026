@@ -1,6 +1,6 @@
 
 
-fetch("/api/ultima")
+fetch("http://localhost:3000/api/ultima")
 .then((respuesta) => {
     if(!respuesta.ok) {
         throw new Error("Error HTTP: " + respuesta.status);
@@ -18,7 +18,7 @@ fetch("/api/ultima")
     console.error("Error:", error)
 });
 
-fetch("/api/historico")
+fetch("http://localhost:3000/api/historico")
 .then((respuesta) => {
 if(!respuesta.ok) {
     throw new error("Error HTTP: " + respuesta.status);
