@@ -1,4 +1,4 @@
-const { error } = require("node:console");
+
 
 fetch("/api/ultima")
 .then((respuesta) => {
