@@ -1,6 +1,6 @@
 
 
-fetch("http://localhost:3000/api/ultima")
+fetch("http://localhost:3000/api/actual")
 .then((respuesta) => {
     if(!respuesta.ok) {
         throw new Error("Error HTTP: " + respuesta.status);
