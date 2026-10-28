@@ -1,13 +1,13 @@
 async function crearCuenta(nombre, email, password) {
     try {
-        const res = await fetch("http://localhost:3000", {
+        const res = await fetch("/api/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({nombre, email, password}),
         });
-        const data = await res.text();
+        const data = await res.json();
         console.log("Respuesta del servidor:", data);
 
         if (res.ok) {
