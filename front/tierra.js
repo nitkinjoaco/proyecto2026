@@ -1,6 +1,7 @@
+const API_URL = 'http://localhost:3000'; 
 
 
-fetch("http://localhost:3000/api/actual")
+fetch(`${API_URL}/api/actual`)
 .then((respuesta) => {
     if(!respuesta.ok) {
         throw new Error("Error HTTP: " + respuesta.status);
@@ -18,7 +19,7 @@ fetch("http://localhost:3000/api/actual")
     console.error("Error:", error)
 });
 
-fetch("http://localhost:3000/api/historico")
+fetch(`${API_URL}/api/historico`)
 .then((respuesta) => {
 if(!respuesta.ok) {
     throw new error("Error HTTP: " + respuesta.status);
