@@ -2,6 +2,7 @@ const API_URL = 'http://localhost:3000';
 
 
 async function crearCuenta(nombre, email, password) {
+  
     try {
         const res = await fetch(`${API_URL}/api/login`, {
             method: "POST",
@@ -15,6 +16,7 @@ async function crearCuenta(nombre, email, password) {
 
         if (res.ok) {
             console.log("Cuenta creada:", data.message || data);
+            form.reset()
             window.location.href = "wireframe.html"
         }
         else{
