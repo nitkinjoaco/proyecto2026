@@ -518,3 +518,35 @@ transform: scale(0.95);
 .boton7:hover{
     text-decoration: underline;
 }
+
+
+.noombre{
+   position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,  -50%);
+    width: 8rem;
+    height: 2vh;
+    margin-top: -4.5rem;
+    margin-left: 1rem;
+    background: none;
+    border: none;
+    box-shadow: none; 
+
+}
+.nombreusuario{
+    color: black;
+    background: none;
+     border: none;
+     box-shadow: none;
+     white-space: nowrap;
+     width: 4rem;
+     height: auto;
+     font-size: 13px;
+     font-family: "Inter", sans-serif;
+     font-optical-sizing: auto;
+     font-weight: weight;
+     font-style: normal;
+     margin-left: 1rem;
+     margin-top: -20rem;
+}

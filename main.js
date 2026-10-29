@@ -53,3 +53,9 @@ botoncuadrado14.addEventListener("click", () => {
 
     window.location.href = "wireframe.html"
 })
+
+localStorage.getItem('nombreUsuario');
+
+if (nombreGuardado) {
+    document.querySelector('noombre').textContent = nombreGuardado;
+}

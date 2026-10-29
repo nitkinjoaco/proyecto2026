@@ -18,6 +18,7 @@ async function crearCuenta(nombre, correo, contraseña) {
             console.log("Cuenta creada:", data.message || data);
             form.reset()
             window.location.href = "wireframe.html"
+            localStorage.setItem('nombreUsuario', datos.nombre);
         }
         else{
             console.log("No se pudo crear la cuenta:", data.message || res.status);

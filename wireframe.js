@@ -16,6 +16,7 @@ async function iniciarSesion(correo1, contraseña1) {
         if (res.ok) {
             console.log("Sesion iniciada:", data.message || data);
             window.location.href = "gestionar.html"
+            
         }
         else{
             console.log("No se pudo iniciar sesion:", data.message || res.status);
