@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    
+    <form id="form"></form>
     <section class="background-cuadrado">
         <img id="imagenfondo" src="images/imagenfondo.png" alt="" class="imagenfondo">
     </section>
@@ -28,14 +28,14 @@
     </section>
     <section class="cuadrado6">
         <p class="correo">Correo electronico</p>
-        <input type="email" name="correo"  class="paracorreo" required>
+        <input type="email" name="correo"  class="paracorreo" id="email" form="form" required>
     </section>
     <section class="cuadrado7">
         <p class="contraseña">Contraseña</p>
-        <input type="password" name="contraseña" class="paracontraseña" required>
+        <input type="password" name="contraseña" class="paracontraseña" id="password" form="form" required>
     </section>
     <section class="cuadrado8">
-        <button type="button" class="boton">Iniciar sesión</button>
+        <button type="submit" class="boton" form="form">Iniciar sesión</button>
     </section>
 
 <section class="cuadrado9">

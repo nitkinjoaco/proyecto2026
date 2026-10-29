@@ -28,6 +28,18 @@ async function iniciarSesion(email, password) {
         }
 }
     
+
+document.querySelector("#form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    const email = document.querySelector("#email").value;
+    const password = document.querySelector("#password").value;
+   
+
+    
+    console.log("llamando a iniciarSesion", email, password);
+    iniciarSesion( email, password)
+});
     
 
 
