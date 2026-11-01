@@ -426,24 +426,25 @@ font-family: "Inter", sans-serif;
             margin-top: -5vh;
         }
 
-        .medicion{
-            font-family: "Inter", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: weight;
-            font-style: normal;
-            background-color: lightgray;
-       font-weight: bold;
-          font-size: 50px;
-          color: white;
-         background: none;
-          border: none;
-          box-shadow: none;
-          margin-top: -100px;
-          text-align: center;
-        white-space: nowrap;
-        }
+       .ultimalectura {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: #fff;
+  font-size: 1.6rem;
+  margin: 0;
+  margin-top: -9rem;
+  white-space: nowrap;
+}
+.punto {
+  width: .6rem;
+  height: .6rem;
+  border-radius: 50%;
+  background: #8bd43a;
+}
+.punto.viejo { background: #e0705a; }
          .cuadrado16{
-           
+           position: relative;
               width: 95%;
               height: 22rem;           
               margin: 5rem auto 0;      
@@ -455,7 +456,7 @@ font-family: "Inter", sans-serif;
           
             opacity: 0.96;
             border-radius: 1rem;
-            margin-top: -60rem;
+            margin-top: -72rem;
         }
 
 
@@ -524,4 +525,146 @@ font-family: "Inter", sans-serif;
 
 .tabs {
   float: left;
+}
+
+.aviso-desconectado {
+  display: none;
+  position: absolute;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #303430;
+  border-radius: 1rem;
+  color: #fff;
+  z-index: 5;
+}
+.aviso-desconectado h2 {
+     margin: 0 0 .6rem; font-size: 2.2rem;    font-family: "Inter", sans-serif;
+     font-optical-sizing: auto;
+     font-weight: weight;
+     font-style: normal;}
+.aviso-desconectado p { 
+    margin: 0; 
+    font-size: 1.1rem; 
+    color: #ccc; 
+       font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+}
+
+body.desconectado .aviso-desconectado { display: flex; }
+body.desconectado .badge,
+body.desconectado .marcador { display: none; }
+body.desconectado .punto { background: #e0705a; }
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 90%;
+  max-width: 1100px;
+  margin: 1.5rem auto;
+}
+.tarjeta {
+  background: rgba(255,255,255,0.92);
+  border-radius: 1rem;
+  padding: 1rem 1.2rem;
+  color: #111;
+}
+.tarjeta h3 { margin: 0 0 .8rem; font-size: 1.1rem; }
+.par { display: flex; gap: 1.5rem; }
+.num { font-size: 2.4rem; font-weight: 800; }
+.u { font-size: 1rem; font-weight: 700; color: #888; margin-left: 2px; }
+.par p { margin: 0; font-size: .85rem; color: #555; }
+.fila { display: flex; align-items: center; gap: .6rem; }
+
+.badge { font-size: .7rem; padding: 3px 8px; border-radius: 999px; }
+.badge.dia    { background: #e3f6dc; color: #3a8a1f; }
+.badge.tarde  { background: #fdefd0; color: #b8791a; }
+.badge.noche  { background: #d6e4f7; color: #2f6db5; }
+.badge.acido  { background: #fde8d0; color: #c0551a; }
+.badge.neutro { background: #e6e6e6; color: #555; }
+.badge.alcalino { background: #dff5d0; color: #3a8a1f; }
+
+.barra { position: relative; height: 5px; border-radius: 99px; margin: .8rem 0 .3rem; }
+.barra-luz { background: linear-gradient(90deg, #3b82c4, #f5c542, #8bd43a); }
+.barra-ph  { background: linear-gradient(90deg, #e0453a, #ddd, #8bd43a); }
+.marcador {
+  position: absolute; top: 50%; left: 0;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #fff; border: 3px solid #000;
+  transform: translate(-50%, -50%);
+}
+.escala { display: flex; justify-content: space-between; font-size: .7rem; color: #777; }
+
+
+.hume{
+    font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+            background-color: lightgray;
+       font-weight: bold;
+          font-size: 30px;
+          color: black;
+         background: none;
+          border: none;
+          box-shadow: none;
+         
+          text-align: center;
+        white-space: nowrap;
+}
+
+.temp{
+        font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+            background-color: lightgray;
+       font-weight: bold;
+          font-size: 30px;
+          color: black;
+         background: none;
+          border: none;
+          box-shadow: none;
+         
+          text-align: center;
+        white-space: nowrap;
+}
+
+.niv{
+     font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+            background-color: lightgray;
+       font-weight: bold;
+          font-size: 30px;
+          color: black;
+         background: none;
+          border: none;
+          box-shadow: none;
+         
+          text-align: center;
+        white-space: nowrap;
+}
+
+.val{
+    font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+            background-color: lightgray;
+       font-weight: bold;
+          font-size: 30px;
+          color: black;
+         background: none;
+          border: none;
+          box-shadow: none;
+         
+          text-align: center;
+        white-space: nowrap; 
 }

@@ -74,7 +74,8 @@
   
     
     <section class="cuadrado14">
-        <p class="medicion">Ultima medicion: <span id="Ultima"></span></p>
+       <p class="ultimalectura"> <span class="punto" id="punto-estado"></span>
+  Ultima lectura: <span id="ultima-lectura">--</span></p>
     </section>  
 
    
@@ -100,6 +101,50 @@
   <div class="grafico-contenedor">
     <canvas id="grafico"></canvas>
   </div>
+
+  <div class="aviso-desconectado">
+  <h2>No se detectó el dispositivo Terrasense</h2>
+  <p>Revisar conexiones de USB en el dispositivo anfitrión</p>
+</div>
+</section>
+
+
+<section class="tarjetas">
+  <article class="tarjeta">
+    <h3 class="hume">Humedad</h3>
+    <div class="par">
+      <div><span class="num" id="hum-aire">--</span><span class="u">%</span><p>Aire</p></div>
+      <div><span class="num" id="hum-suelo">--</span><span class="u">%</span><p>Suelo</p></div>
+    </div>
+  </article>
+
+  <article class="tarjeta">
+    <h3 class="temp">Temperatura</h3>
+    <div class="par">
+      <div><span class="num" id="temp-aire">--</span><span class="u">°c</span><p>Aire</p></div>
+      <div><span class="num" id="temp-suelo">--</span><span class="u">°c</span><p>Suelo</p></div>
+    </div>
+  </article>
+
+  <article class="tarjeta">
+    <h3 class="niv">Nivel de luz</h3>
+    <div class="fila">
+      <span class="num" id="luz-valor">--</span>
+      <span class="badge" id="luz-badge"></span>
+    </div>
+    <div class="barra barra-luz"><i class="marcador" id="luz-marcador"></i></div>
+    <div class="escala"><span>noche</span><span>tarde</span><span>día</span></div>
+  </article>
+
+  <article class="tarjeta">
+    <h3 class="val">Valor pH</h3>
+    <div class="fila">
+      <span class="num" id="ph-valor">--</span>
+      <span class="badge" id="ph-badge"></span>
+    </div>
+    <div class="barra barra-ph"><i class="marcador" id="ph-marcador"></i></div>
+    <div class="escala"><span>ácido</span><span>neutro</span><span>alcalino</span></div>
+  </article>
 </section>
       
 

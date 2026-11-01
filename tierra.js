@@ -78,13 +78,15 @@ function dibujar() {
   const cfg = METRICAS[metricaActual];
   if (!cfg) return;
 
-  grafico.data.labels = historial.map(d => {
-    const tiempo = d.timestamp || d.fecha;
-    return new Date(tiempo).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
-  });
-  grafico.data.labels = historial.map(d =>
-    new Date(d.timestamp).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' })
-  );
+ grafico.data.labels = historial.map(d => {
+  const f = new Date(d.timestamp);
+  const hora = f.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false });
+  if (horasActual > 24) {
+    const dia = f.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit' });
+    return `${dia} ${hora}`;
+  }
+  return hora;
+});
 
   grafico.data.datasets = cfg.series.map(s => ({
     label: s.nombre,
@@ -120,10 +122,11 @@ fetch(`${API_URL}/api/historico`)
     .then((datos) => {
       console.log("Historial recibido", datos);
 
-      if (datos && datos.length > 0) {
-        historial = datos;
-        dibujar();
-      } else {
+     if (datos && datos.length > 0) {
+  const desde = Date.now() - horasActual * 60 * 60 * 1000;
+  historial = datos.filter(d => new Date(d.timestamp).getTime() >= desde);
+  dibujar();
+} else {
         console.warn("La API devolvió datos vacíos. Esperando registros...");
       }
     })
@@ -163,6 +166,111 @@ cargarDatos();
 setInterval(cargarDatos, 10000);
 
 
+
+const fmt = v => (v == null ? '--' : Math.round(v * 10) / 10);
+
+function actualizarTarjetas(d) {
+  document.getElementById('hum-aire').textContent   = fmt(d.aire?.humedad);
+  document.getElementById('hum-suelo').textContent  = fmt(d.suelo?.humedad);
+  document.getElementById('temp-aire').textContent  = fmt(d.aire?.temperatura);
+  document.getElementById('temp-suelo').textContent = fmt(d.suelo?.temperatura);
+
+  // Luz: día 50-100, tarde 20-50, noche 0-20
+  const luz = d.luz;
+  document.getElementById('luz-valor').textContent = fmt(luz);
+  const luzBadge = document.getElementById('luz-badge');
+  if (luz != null) {
+    const tipo = luz >= 50 ? 'dia' : luz >= 20 ? 'tarde' : 'noche';
+    const texto = { dia: 'Luz de día', tarde: 'Luz de tarde', noche: 'Luz de noche' }[tipo];
+    luzBadge.className = 'badge ' + tipo;
+    luzBadge.textContent = texto;
+    document.getElementById('luz-marcador').style.left =
+      Math.min(100, Math.max(0, luz)) + '%';
+  }
+
+  // pH: escala 0-14
+  const ph = d.ph;
+  document.getElementById('ph-valor').textContent = fmt(ph);
+  const phBadge = document.getElementById('ph-badge');
+  if (ph != null) {
+    const tipo = ph < 6.5 ? 'acido' : ph <= 7.5 ? 'neutro' : 'alcalino';
+    const texto = { acido: 'Ácido', neutro: 'Neutro', alcalino: 'Alcalino' }[tipo];
+    phBadge.className = 'badge ' + tipo;
+    phBadge.textContent = texto;
+    document.getElementById('ph-marcador').style.left =
+      (Math.min(14, Math.max(0, ph)) / 14 * 100) + '%';
+  }
+}
+
+function cargarActual() {
+  fetch(`${API_URL}/api/actual`)
+    .then((respuesta) => {
+      if (!respuesta.ok) {
+        throw new Error("Error HTTP: " + respuesta.status);
+      }
+      return respuesta.json();
+    })
+    .then((datos) => {
+      console.log("Ultima medicion:", datos);
+      const d = Array.isArray(datos) ? datos.at(-1) : datos;
+      actualizarTarjetas(d);
+      ultimoTimestamp = d.timestamp;
+actualizarUltimaLectura();
+aplicarEstado();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      ultimoTimestamp = null;
+aplicarEstado();
+    });
+}
+
+cargarActual();
+setInterval(() => {
+  actualizarUltimaLectura();
+  aplicarEstado();
+}, 30000);
+
+
+
+let ultimoTimestamp = null;
+
+function textoHace(ts) {
+  const seg = Math.max(0, Math.floor((Date.now() - new Date(ts)) / 1000));
+  if (seg < 60) return 'hace unos segundos';
+  const min = Math.floor(seg / 60);
+  if (min < 60) return `hace ${min} min`;
+  const h = Math.floor(min / 60);
+  if (h < 24) return `hace ${h} h`;
+  const dias = Math.floor(h / 24);
+  return `hace ${dias} ${dias === 1 ? 'día' : 'días'}`;
+}
+
+function actualizarUltimaLectura() {
+  if (!ultimoTimestamp) return;
+  document.getElementById('ultima-lectura').textContent = textoHace(ultimoTimestamp);
+  const viejo = (Date.now() - new Date(ultimoTimestamp)) > 5 * 60 * 1000;
+  document.getElementById('punto-estado').classList.toggle('viejo', viejo);
+}
+
+const LIMITE_MS = 2 * 60 * 1000;
+
+function estaConectado() {
+  return ultimoTimestamp && (Date.now() - new Date(ultimoTimestamp)) < LIMITE_MS;
+}
+
+function aplicarEstado() {
+  const ok = estaConectado();
+  document.body.classList.toggle('desconectado', !ok);
+  if (ok) return;
+  ['hum-aire', 'hum-suelo', 'temp-aire', 'temp-suelo', 'luz-valor', 'ph-valor', 'ultima-lectura']
+    .forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = '?';
+    });
+}
+
+setInterval(actualizarUltimaLectura, 30000);
 
 
 const boton = document.querySelector('.boton5');
