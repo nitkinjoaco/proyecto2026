@@ -444,16 +444,18 @@ font-family: "Inter", sans-serif;
         }
          .cuadrado16{
            
-             top: 50%;
-            left: 50%;
-            transform: translate(-50%,  -50%);
-            width: 95%;
-            height: 15rem;
-            background-color: #303430;
-           margin-left: 10rem;
-           margin-top: 5rem;
+              width: 95%;
+              height: 22rem;           
+              margin: 5rem auto 0;      
+              background-color: #303430;
+              opacity: 0.96;
+              border-radius: 1rem;
+              overflow: hidden;
+             background-color: #303430;
+          
             opacity: 0.96;
             border-radius: 1rem;
+            margin-top: -60rem;
         }
 
 
@@ -512,8 +514,8 @@ font-family: "Inter", sans-serif;
   clear: both;
   position: relative;
   height: 16rem;
-  padding-top: 1rem;
-  margin-left: 5rem;
+  padding: 1rem 1rem 0;
+  margin: 0;
 }
 
 .rango {
