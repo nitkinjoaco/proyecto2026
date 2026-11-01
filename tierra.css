@@ -442,3 +442,84 @@ font-family: "Inter", sans-serif;
           text-align: center;
         white-space: nowrap;
         }
+         .cuadrado16{
+           
+             top: 50%;
+            left: 50%;
+            transform: translate(-50%,  -50%);
+            width: 95%;
+            height: 15rem;
+            background-color: #303430;
+           margin-left: 10rem;
+           margin-top: 5rem;
+            opacity: 0.96;
+            border-radius: 1rem;
+        }
+
+
+        .tabs,
+.rango {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 90rem;
+  padding: 3px;
+}
+
+.tabs button,
+.rango button {
+  background: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;}
+
+  .tabs button:hover,
+.rango button:hover {
+  color: #fff;
+}
+
+.tabs button.activo,
+.rango button.activo {
+  background: #fff;
+  color: #000;
+}
+
+.leyenda {
+  float: right;
+  margin-right: 1rem;
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: #fff;
+}
+
+.leyenda span {
+  display: inline-block;
+  margin-left: 0.75rem;
+}
+
+.leyenda span::before {
+  content: '';
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.4rem;
+  border-radius: 2px;
+  background: var(--c);
+}
+
+.grafico-contenedor {
+  clear: both;
+  position: relative;
+  height: 16rem;
+  padding-top: 1rem;
+  margin-left: 5rem;
+}
+
+.rango {
+  float: right;
+}
+
+.tabs {
+  float: left;
+}

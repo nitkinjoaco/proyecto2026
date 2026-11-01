@@ -72,14 +72,35 @@
         </p>
     </section>
   
-    <div class="chart">
-        <canvas id="myChart"></canvas>
-    </div>
+    
     <section class="cuadrado14">
         <p class="medicion">Ultima medicion: <span id="Ultima"></span></p>
     </section>  
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
+
+ 
+
+    <section class="cuadrado16">
+  <div class="tabs">
+    <button data-metrica="humedad" class="activo">Humedad</button>
+    <button data-metrica="temperatura">Temperatura</button>
+    <button data-metrica="luz">Luz</button>
+    <button data-metrica="ph">pH</button>
+  </div>
+
+  <div class="rango">
+    <button data-horas="24" class="activo">24h</button>
+    <button data-horas="168">7 dias</button>
+  </div>
+
+  <div class="leyenda"></div>
+
+
+  <div class="grafico-contenedor">
+    <canvas id="grafico"></canvas>
+  </div>
+</section>
       
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
