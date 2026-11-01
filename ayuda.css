@@ -424,12 +424,7 @@ font-weight: bold;
     }
 
 
-  .boton:hover{
-    text-decoration: underline;
-    text-decoration-color: #55a936;
-    text-underline-offset: 5px;
-    text-decoration-thickness: 3.5px;
-    }
+ 
    
 
 
@@ -512,98 +507,10 @@ font-weight: bold;
     }
 
 
-    .boton2:hover{
-        text-decoration: underline;
-        text-decoration-color: #55a936;
-        text-underline-offset: 5px;
-        text-decoration-thickness: 3.5px;
-    }
-
-
-.cuadrado10{
-position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,  -50%);
-    width: 10rem;
-    height: 7.8125vh;
-    background-color: black;
-   margin-left: 130rem;
-   margin-top: -42.5vh;
-    background: none;
-    box-shadow: none;
-    border: none;
-}
-
-
-.boton3{
-color: black;
-background: none;
-border: none;
-box-shadow: none;
-white-space: nowrap;
-width: 12rem;
-height: 3.91vh;
-font-size: 17px;
-font-family: "Inter", sans-serif;
-font-optical-sizing: auto;
-font-weight: weight;
-font-style: normal;
-}
-
-
-.boton3:hover{
-text-decoration: underline;
-text-decoration-color: #55a936;
-text-underline-offset: 5px;
-text-decoration-thickness: 3px;
-}
+    
 
 
 
-
-.cuadrado11{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,  -50%);
-    width: 10rem;
-    height: 7.8125vh;
-    background-color: black;
-    background: none;
-    box-shadow: none;
-    border: none;
-    margin-left: 145rem;
-    margin-top: -42.5vh;
-
-
-
-
-}
-
-
-.boton4{
-color: black;
-background: none;
-border: none;
-box-shadow: none;
-white-space: nowrap;
-width: 12rem;
-height: 3.91vh;
-font-size: 17px;
-font-family: "Inter", sans-serif;
-font-optical-sizing: auto;
-font-weight: weight;
-font-style: normal;
-}
-
-
-.boton4:hover{
-text-decoration: underline;
-text-decoration-color: #55a936;
-text-underline-offset: 5px;
-text-decoration-thickness: 3px;
-}
 
 
 .cuadrado12{
@@ -636,16 +543,18 @@ position: fixed;
   background: none;
   box-shadow: none;
   border: none;
-}
+  margin-left: -13rem;
+  text-decoration: none;
+  font-weight: normal;
 
+}
 
 .iconousuario {
-  width: 3.5rem;
-  height: 4.56vh;
-  color: #374151;
+  width: 5rem; 
+  height: 11vh; 
+  color: #374151; 
   stroke-width: 1.5px;
 }
-
 
 .boton5:active{
 transform: scale(0.95);
@@ -658,11 +567,11 @@ transform: scale(0.95);
     left: 50%;
     transform: translate(-50%,  -50%);
     width: 18.6rem;
-    height: 16vh;
+    height: 15.62vh;
     opacity: 0.7;
     background-color: #F0F0F0;
     margin-left: 59rem;
-    margin-top: -31.3vh;
+    margin-top: -30vh;
     display: none;
 }
 
@@ -673,7 +582,7 @@ transform: scale(0.95);
 .imagen2{
     margin-top: 3rem;
     margin-left: 2rem;
-    width: 2.1rem;
+    width: 2.3rem;
     height: auto;
 }
 
@@ -683,10 +592,10 @@ transform: scale(0.95);
     left: 50%;
     transform: translate(-50%,  -50%);
     width: 8rem;
-    height: 0.5vh;
-    margin-top: -2rem;
+    height: 2vh;
+    margin-top: -1.3rem;
     margin-left: -1.5rem;
-    
+    background-color: #F0F0F0;
     
    
 }
@@ -719,12 +628,12 @@ transform: scale(0.95);
     transform: translate(-50%,  -50%);
     width: 8rem;
     height: 0.5vh;
-    margin-top: 1.8rem;
-    margin-left: -0.5rem;
+    margin-top: 1.6rem;
+    margin-left: -0.1rem;
   background: none;
   border: none;
   box-shadow: none;
-     
+    background-color: #F0F0F0; 
 }
 
 .imagen3{
@@ -748,7 +657,6 @@ transform: scale(0.95);
          font-weight: weight;
          font-style: normal;
          margin-left: 2.6rem;
-         margin-top: 10vh;
 }
 
 .boton7:hover{
@@ -756,17 +664,33 @@ transform: scale(0.95);
 }
 
 
-.img1{
-    position: fixed;
+.noombre{
+   position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%,  -50%);
     width: 8rem;
-    height: 0.5vh;
-    margin-top: -8vh;
-    margin-left: -5.5rem;
-  background: none;
-  border: none;
-  box-shadow: none;
-  
+    height: 2vh;
+    margin-top: -4.5rem;
+    margin-left: 1rem;
+    background: none;
+    border: none;
+    box-shadow: none; 
+
+}
+.nombreusuario{
+    color: black;
+    background: none;
+     border: none;
+     box-shadow: none;
+     white-space: nowrap;
+     width: 4rem;
+     height: auto;
+     font-size: 13px;
+     font-family: "Inter", sans-serif;
+     font-optical-sizing: auto;
+     font-weight: weight;
+     font-style: normal;
+     margin-left: 1rem;
+     margin-top: -20rem;
 }

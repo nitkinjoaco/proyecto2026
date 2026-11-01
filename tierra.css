@@ -115,12 +115,6 @@ font-family: "Inter", sans-serif;
       }
   
   
-    .boton:hover{
-        text-decoration: underline;
-        text-decoration-color: #55a936;
-        text-underline-offset: 5px;
-        text-decoration-thickness: 3.5px;
-      }
      
   
   
@@ -162,12 +156,7 @@ font-family: "Inter", sans-serif;
   
       }
   
-      .boton1:hover{
-        text-decoration: underline;
-        text-decoration-color: #55a936;
-        text-underline-offset: 5px;
-        text-decoration-thickness: 3.5px;
-            }
+      
   
   
      
@@ -246,8 +235,8 @@ font-family: "Inter", sans-serif;
         
         
         .iconousuario {
-          width: 3.5rem;
-          height: 4.56vh;
+          width: 4.5rem;
+          height: 5vh;
           color: #374151;
           stroke-width: 1.5px;
         }
@@ -257,7 +246,139 @@ font-family: "Inter", sans-serif;
         transform: scale(0.95);
         }
   
+   .cuadrado15{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,  -50%);
+    width: 18.6rem;
+    height: 15.62vh;
+    opacity: 0.7;
+    background-color: #F0F0F0;
+    margin-left: 59rem;
+    margin-top: -30vh;
+    display: none;
+}
+.cuadrado15.mostrar{
+    display: block;
+}
+
+.imagen2{
+    margin-top: 3rem;
+    margin-left: 2rem;
+    width: 2.3rem;
+    height: auto;
+}
+
+.contra{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,  -50%);
+    width: 8rem;
+    height: 2vh;
+    margin-top: -1.3rem;
+    margin-left: -1.5rem;
+    background-color: #F0F0F0;
+    
    
+}
+
+.boton6{
+    color: black;
+   background: none;
+    border: none;
+    box-shadow: none;
+    white-space: nowrap;
+    width: 120px;
+    height: 30px;
+    font-size: 13px;
+    font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+
+}
+
+.boton6:hover{
+    text-decoration: underline;
+
+}
+
+.img{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,  -50%);
+    width: 8rem;
+    height: 0.5vh;
+    margin-top: 1.6rem;
+    margin-left: -0.1rem;
+  background: none;
+  border: none;
+  box-shadow: none;
+    background-color: #F0F0F0; 
+}
+
+.imagen3{
+   
+    margin-left: -3rem;
+    width: 2.3rem;
+    height: auto;
+}
+
+.boton7{
+    color: black;
+    background: none;
+     border: none;
+     box-shadow: none;
+     white-space: nowrap;
+     width: 120px;
+     height: 30px;
+     font-size: 13px;
+     font-family: "Inter", sans-serif;
+         font-optical-sizing: auto;
+         font-weight: weight;
+         font-style: normal;
+         margin-left: 2.6rem;
+}
+
+.boton7:hover{
+    text-decoration: underline;
+}
+
+
+.noombre{
+   position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,  -50%);
+    width: 8rem;
+    height: 2vh;
+    margin-top: -4.5rem;
+    margin-left: 1rem;
+    background: none;
+    border: none;
+    box-shadow: none; 
+
+}
+.nombreusuario{
+    color: black;
+    background: none;
+     border: none;
+     box-shadow: none;
+     white-space: nowrap;
+     width: 4rem;
+     height: auto;
+     font-size: 13px;
+     font-family: "Inter", sans-serif;
+     font-optical-sizing: auto;
+     font-weight: weight;
+     font-style: normal;
+     margin-left: 1rem;
+     margin-top: -20rem;
+}
+
         .cuadrado13{
             position: fixed;
             top: 50%;

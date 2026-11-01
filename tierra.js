@@ -6,7 +6,7 @@ fetch(`${API_URL}/api/actual`)
     if(!respuesta.ok) {
         throw new Error("Error HTTP: " + respuesta.status);
     }
-    return respuesta.json();
+    return respuesta.text();
 })
 .then((datos) => {
     console.log("Ultima medicion:", datos);
@@ -22,17 +22,35 @@ fetch(`${API_URL}/api/actual`)
 fetch(`${API_URL}/api/historico`)
 .then((respuesta) => {
 if(!respuesta.ok) {
-    throw new error("Error HTTP: " + respuesta.status);
+    throw new Error("Error HTTP: " + respuesta.status);
 }
     return respuesta.json();
 })
 .then((datos) => {
-    console.log("Historial", datos);
+    console.log("Historial recibido", datos);
+
+historial = datos;
+dibujar();
 })
+
 .catch ((error) => {
-    console.error("Error:", error)
+    console.error("Error al cargar el historial:", error)
 });
 
+
+const boton = document.querySelector('.boton5');
+const cuadrado = document.querySelector('.cuadrado15');
+
+boton.addEventListener('click', () => {
+    if (cuadrado.classList.contains('mostrar')) {
+        cuadrado.classList.remove('mostrar');
+    } else {
+        cuadrado.classList.add('mostrar');
+    }
+});  
+cuadrado.addEventListener('mouseleave', () => {
+    cuadrado.classList.remove('mostrar');
+});
 
 const botoncuadrado = document.querySelector('.boton1');
 

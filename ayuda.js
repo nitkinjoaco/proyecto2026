@@ -68,3 +68,8 @@ cuadrado.addEventListener('mouseleave', () => {
 });
 
 
+localStorage.getItem('nombreUsuario');
+
+if (nombreGuardado) {
+    document.querySelector('noombre').textContent = nombreGuardado;
+}
