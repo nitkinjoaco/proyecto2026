@@ -16,7 +16,7 @@ const METRICAS = {
       { campo: 'aire', subcampo: 'humedad', nombre: 'Aire', color: '#c7d9f5' },
       { campo: 'suelo', subcampo: 'humedad', nombre: 'Suelo', color: '#4caf2a' },
     ],
-    min: 0, max: 100, unidad: '%',
+    min: 40, max: 100, unidad: '%',
   },
   temperatura: {
     series: [
@@ -79,12 +79,14 @@ function dibujar() {
   if (!cfg) return;
 
   grafico.data.labels = historial.map(d => {
-    const tiempo = d.timestamp || d.fecha;
-    return new Date(tiempo).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+    const f = new Date(d.timestamp);
+    const hora = f.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false });
+    if (horasActual > 24) {
+      const dia = f.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit' });
+      return `${dia} ${hora}`;
+    }
+    return hora;
   });
-  grafico.data.labels = historial.map(d =>
-    new Date(d.timestamp).toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' })
-  );
 
   grafico.data.datasets = cfg.series.map(s => ({
     label: s.nombre,
@@ -97,8 +99,8 @@ function dibujar() {
     borderWidth: 2,
   }));
 
-  grafico.options.scales.y.min = cfg.min;
-  grafico.options.scales.y.max = cfg.max;
+  grafico.options.scales.y.min = undefined;
+  grafico.options.scales.y.max = undefined;
   grafico.options.scales.y.ticks.callback = v => v + cfg.unidad;
 
   document.querySelector('.leyenda').innerHTML = cfg.series
