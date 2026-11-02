@@ -54,13 +54,7 @@ const grafico = new Chart(document.getElementById('grafico'), {
     scales: {
       x: {
         grid: { display: false },
-  ticks: {
-    color: '#aaa',
-    maxRotation: 0,
-    minRotation: 0,
-    autoSkip: true,
-    maxTicksLimit: 8,
-  },
+        ticks: { color: '#aaa' },
       },
       y: {
         min: 40,
@@ -95,20 +89,24 @@ function dibujar() {
     }),
     borderColor: s.color,
     tension: 0.35,
-    pointRadius: 0,
+    pointRadius: 3,
     borderWidth: 2,
   }));
 
+<<<<<<< HEAD
   grafico.options.scales.y.min = undefined;
   grafico.options.scales.y.max = undefined;
+=======
+  grafico.options.scales.y.min = cfg.min;
+  grafico.options.scales.y.max = cfg.max;
+>>>>>>> parent of 5752b05 (funhciona el grafico)
   grafico.options.scales.y.ticks.callback = v => v + cfg.unidad;
 
   document.querySelector('.leyenda').innerHTML = cfg.series
     .map(s => `<span style="--c:${s.color}">${s.nombre}</span>`)
     .join('');
-
+console.log("Datos listos para pintar:", historial);
   grafico.update();
-  
 }
 
 function cargarDatos(){
@@ -163,6 +161,7 @@ document.querySelectorAll('[data-metrica]').forEach(btn => {
 cargarDatos();
 
 setInterval(cargarDatos, 10000);
+
 
 
 
