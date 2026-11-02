@@ -1,6 +1,6 @@
 const API_URL = 'http://localhost:3000';
 
-async function iniciarSesion(correo1, contraseña1) {
+async function iniciarSesion(email, password) {
   try{
     const res = await fetch(`${API_URL}/api/signin`, {
         method: "POST",
@@ -8,7 +8,7 @@ async function iniciarSesion(correo1, contraseña1) {
             "Content-Type": "application/json"
   
         },
-        body: JSON.stringify({ correo1, contraseña1}),
+        body: JSON.stringify({ email, password}),
         }); 
         const data = await res.text();
         console.log("Respuesta del servidor:", data);
@@ -33,13 +33,13 @@ async function iniciarSesion(correo1, contraseña1) {
 document.querySelector("#form").addEventListener("submit", (e) => {
     e.preventDefault();
     
-    const correo1 = document.querySelector("#email").value;
-    const contraseña1 = document.querySelector("#password").value;
+    const email = document.querySelector("#email").value;
+    const password = document.querySelector("#password").value;
    
 
     
-    console.log("llamando a iniciarSesion", correo1, contraseña1);
-    iniciarSesion( correo1, contraseña1)
+    console.log("llamando a iniciarSesion", email, password);
+    iniciarSesion( email, password)
 });
     
 

@@ -1,9 +1,17 @@
 
 
+
+
 let historial = [];
 let metricaActual = 'humedad';
 let horasActual = 24;
-const API_URL = 'http://localhost:3000'; 
+const API_URL = 'http://localhost:3000';
+
+
+
+
+
+
 
 
 
@@ -34,6 +42,9 @@ const METRICAS = {
     min: 0, max: 14, unidad: '',
   },
 };
+
+
+
 
 
 
@@ -73,10 +84,13 @@ const grafico = new Chart(document.getElementById('grafico'), {
 });
 
 
+
+
 function dibujar() {
     console.log("Ejecutando dibujar(), métrica actual:", metricaActual);
   const cfg = METRICAS[metricaActual];
   if (!cfg) return;
+
 
  grafico.data.labels = historial.map(d => {
   const f = new Date(d.timestamp);
@@ -87,6 +101,7 @@ function dibujar() {
   }
   return hora;
 });
+
 
   grafico.data.datasets = cfg.series.map(s => ({
     label: s.nombre,
@@ -99,17 +114,21 @@ function dibujar() {
     borderWidth: 2,
   }));
 
+
   grafico.options.scales.y.min = undefined;
 grafico.options.scales.y.max = undefined;
   grafico.options.scales.y.ticks.callback = v => v + cfg.unidad;
+
 
   document.querySelector('.leyenda').innerHTML = cfg.series
     .map(s => `<span style="--c:${s.color}">${s.nombre}</span>`)
     .join('');
 
+
   grafico.update();
-  
+ 
 }
+
 
 function cargarDatos(){
 fetch(`${API_URL}/api/historico`)
@@ -121,6 +140,7 @@ fetch(`${API_URL}/api/historico`)
     })
     .then((datos) => {
       console.log("Historial recibido", datos);
+
 
      if (datos && datos.length > 0) {
   const desde = Date.now() - horasActual * 60 * 60 * 1000;
@@ -135,45 +155,61 @@ fetch(`${API_URL}/api/historico`)
     });
 
 
+
+
 }
+
 
 document.querySelectorAll('[data-horas]').forEach(btn => {
   btn.addEventListener('click', () => {
     horasActual = Number(btn.dataset.horas);
 
+
     document.querySelectorAll('[data-horas]').forEach(b => b.classList.remove('activo'));
     btn.classList.add('activo');
+
 
    cargarDatos();
   });
 });
 
+
 document.querySelectorAll('[data-metrica]').forEach(btn => {
   btn.addEventListener('click', () => {
     metricaActual = btn.dataset.metrica;
 
+
     document.querySelectorAll('[data-metrica]').forEach(b => b.classList.remove('activo'));
     btn.classList.add('activo');
+
 
     dibujar();
   });
 });
-  
+ 
+
+
 
 
 cargarDatos();
+
 
 setInterval(cargarDatos, 10000);
 
 
 
+
+
+
 const fmt = v => (v == null ? '--' : Math.round(v * 10) / 10);
+
 
 function actualizarTarjetas(d) {
   document.getElementById('hum-aire').textContent   = fmt(d.aire?.humedad);
   document.getElementById('hum-suelo').textContent  = fmt(d.suelo?.humedad);
   document.getElementById('temp-aire').textContent  = fmt(d.aire?.temperatura);
   document.getElementById('temp-suelo').textContent = fmt(d.suelo?.temperatura);
+
 
   // Luz: día 50-100, tarde 20-50, noche 0-20
   const luz = d.luz;
@@ -188,6 +224,7 @@ function actualizarTarjetas(d) {
       Math.min(100, Math.max(0, luz)) + '%';
   }
 
+
   // pH: escala 0-14
   const ph = d.ph;
   document.getElementById('ph-valor').textContent = fmt(ph);
@@ -201,6 +238,7 @@ function actualizarTarjetas(d) {
       (Math.min(14, Math.max(0, ph)) / 14 * 100) + '%';
   }
 }
+
 
 function cargarActual() {
   fetch(`${API_URL}/api/actual`)
@@ -225,6 +263,7 @@ aplicarEstado();
     });
 }
 
+
 cargarActual();
 setInterval(() => {
   actualizarUltimaLectura();
@@ -233,7 +272,11 @@ setInterval(() => {
 
 
 
+
+
+
 let ultimoTimestamp = null;
+
 
 function textoHace(ts) {
   const seg = Math.max(0, Math.floor((Date.now() - new Date(ts)) / 1000));
@@ -246,6 +289,7 @@ function textoHace(ts) {
   return `hace ${dias} ${dias === 1 ? 'día' : 'días'}`;
 }
 
+
 function actualizarUltimaLectura() {
   if (!ultimoTimestamp) return;
   document.getElementById('ultima-lectura').textContent = textoHace(ultimoTimestamp);
@@ -253,11 +297,14 @@ function actualizarUltimaLectura() {
   document.getElementById('punto-estado').classList.toggle('viejo', viejo);
 }
 
+
 const LIMITE_MS = 2 * 60 * 1000;
+
 
 function estaConectado() {
   return ultimoTimestamp && (Date.now() - new Date(ultimoTimestamp)) < LIMITE_MS;
 }
+
 
 function aplicarEstado() {
   const ok = estaConectado();
@@ -270,11 +317,15 @@ function aplicarEstado() {
     });
 }
 
+
 setInterval(actualizarUltimaLectura, 30000);
+
+
 
 
 const boton = document.querySelector('.boton5');
 const cuadrado = document.querySelector('.cuadrado15');
+
 
 boton.addEventListener('click', () => {
     if (cuadrado.classList.contains('mostrar')) {
@@ -287,17 +338,27 @@ cuadrado.addEventListener('mouseleave', () => {
     cuadrado.classList.remove('mostrar');
 });
 
+
 const botoncuadrado = document.querySelector('.boton1');
+
 
 botoncuadrado.addEventListener("click", () => {
 
-    window.location.href = "ayuda.html"; 
+
+    window.location.href = "ayuda.html";
 });
+
 
 const botoncuadrado1 = document.querySelector('.boton');
 
+
 botoncuadrado1.addEventListener("click", () => {
 
-    window.location.href = "gestionar.html"; 
+
+    window.location.href = "gestionar.html";
 });
+
+
+
+
 
