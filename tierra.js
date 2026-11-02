@@ -16,7 +16,7 @@ const METRICAS = {
       { campo: 'aire', subcampo: 'humedad', nombre: 'Aire', color: '#c7d9f5' },
       { campo: 'suelo', subcampo: 'humedad', nombre: 'Suelo', color: '#4caf2a' },
     ],
-    min: 40, max: 100, unidad: '%',
+    min: 0, max: 100, unidad: '%',
   },
   temperatura: {
     series: [
@@ -97,8 +97,8 @@ function dibujar() {
     borderWidth: 2,
   }));
 
-  grafico.options.scales.y.min = undefined;
-grafico.options.scales.y.max = undefined;
+  grafico.options.scales.y.min = cfg.min;
+  grafico.options.scales.y.max = cfg.max;
   grafico.options.scales.y.ticks.callback = v => v + cfg.unidad;
 
   document.querySelector('.leyenda').innerHTML = cfg.series
