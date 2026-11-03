@@ -43,7 +43,7 @@ html {
     left: 50%;
     transform: translate(-50%,  -50%);
     width: 100vw;
-    height: 11vh;
+    height: 12vh;
     background-color: lightgray;
     opacity: 1;
     border: 1px solid lightgray;
@@ -65,7 +65,7 @@ position: fixed;
     left: 50%;
     transform: translate(-50%,  -50%);
     width: 120rem;
-    height: 26.04vh;
+    height: 27vh;
     background-color: lightgray;
     opacity: 0.9;
     border: 1px solid lightgray;
@@ -137,8 +137,8 @@ font-family: "Inter", sans-serif;
   color: #FFFFFF;
   max-width: 90rem;
   padding: 2.5rem;
-  margin-left: 40rem;
-  margin-top: -130rem;
+  margin-left: 25rem;
+  margin-top: -100rem;
 }
 
 .ayuda h1 {
@@ -350,7 +350,8 @@ position: fixed;
   background: none;
   box-shadow: none;
   border: none;
-  margin-left: -13rem;
+  margin-left: -8rem;
+  margin-top: -2rem;
   text-decoration: none;
   font-weight: normal;
 
@@ -378,7 +379,7 @@ transform: scale(0.95);
     opacity: 0.7;
     background-color: #F0F0F0;
     margin-left: 59rem;
-    margin-top: -30vh;
+    margin-top: -31vh;
     display: none;
 }
 

@@ -36,7 +36,6 @@ width: 100vw;
 
 
 
-
     .cuadrado3{
 position: fixed;
     top: 50%;
@@ -244,7 +243,7 @@ font-family: "Inter", sans-serif;
        
        
         .iconousuario {
-          width: 4.5rem;
+          width: 6rem;
           height: 5vh;
           color: #374151;
           stroke-width: 1.5px;
@@ -260,12 +259,12 @@ font-family: "Inter", sans-serif;
     top: 50%;
     left: 50%;
     transform: translate(-50%,  -50%);
-    width: 18.6rem;
+    width: 12rem;
     height: 15.62vh;
-    opacity: 0.7;
-    background-color: #F0F0F0;
-    margin-left: 59rem;
-    margin-top: -30vh;
+    opacity: 0.9;
+    background-color: lightgray;
+    margin-left: 36rem;
+    margin-top: -30.5vh;
     display: none;
 }
 .cuadrado15.mostrar{
@@ -274,9 +273,9 @@ font-family: "Inter", sans-serif;
 
 
 .imagen2{
-    margin-top: 3rem;
-    margin-left: 2rem;
-    width: 2.3rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: 1.9rem;
     height: auto;
 }
 
@@ -289,8 +288,8 @@ font-family: "Inter", sans-serif;
     width: 8rem;
     height: 2vh;
     margin-top: -1.3rem;
-    margin-left: -1.5rem;
-    background-color: #F0F0F0;
+    margin-left: 1rem;
+    background-color: lightgray;
    
    
 }
@@ -328,20 +327,21 @@ font-family: "Inter", sans-serif;
     transform: translate(-50%,  -50%);
     width: 8rem;
     height: 0.5vh;
-    margin-top: 1.6rem;
-    margin-left: -0.1rem;
+    margin-top: 1rem;
+    margin-left: 2rem;
   background: none;
   border: none;
   box-shadow: none;
-    background-color: #F0F0F0;
+    background-color: lightgray;
 }
 
 
 .imagen3{
    
-    margin-left: -3rem;
-    width: 2.3rem;
+    margin-left: -2.9rem;
+    width: 1.9rem;
     height: auto;
+    margin-top: -0.2rem;
 }
 
 
@@ -430,7 +430,7 @@ font-family: "Inter", sans-serif;
          background: none;
           border: none;
           box-shadow: none;
-          margin-top: -100px;
+          margin-top: -7rem;
           text-align: center;
         white-space: nowrap;
         }
@@ -448,7 +448,7 @@ font-family: "Inter", sans-serif;
             box-shadow: none;
             border: none;
             margin-left: -34rem;
-            margin-top: -5vh;
+            margin-top: -2vh;
         }
 
 
@@ -482,7 +482,7 @@ font-family: "Inter", sans-serif;
          
             opacity: 0.96;
             border-radius: 1rem;
-            margin-top: -72rem;
+            margin-top: -52rem;
         }
 
 
@@ -549,9 +549,9 @@ font-family: "Inter", sans-serif;
 .grafico-contenedor {
   clear: both;
   position: relative;
-  height: 16rem;
+  height: 7vh;
   padding: 1rem 1rem 0;
-  margin: 0;
+  margin-top: 10rem;
 }
 
 
