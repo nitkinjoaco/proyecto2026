@@ -15,6 +15,8 @@ async function iniciarSesion(correo1, contraseña1) {
 
         if (res.ok) {
             console.log("Sesion iniciada:", data.message || data);
+              localStorage.setItem("correo", correo1);
+    localStorage.setItem("contraseña", contraseña1);
             window.location.href = "gestionar.html"
             
         }

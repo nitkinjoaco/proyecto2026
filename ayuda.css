@@ -139,16 +139,18 @@ font-family: "Inter", sans-serif;
   padding: 2.5rem;
   margin-left: 25rem;
   margin-top: -100rem;
+    pointer-events: none;
 }
 
 .ayuda h1 {
-  font-size: 10rem;
+  font-size: 8rem;
   margin-bottom: 1.5rem;
   color: #FFFFFF;
 }
 
 details {
   margin-bottom: 0.875rem;
+    pointer-events: auto;
 }
 
 summary {

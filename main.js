@@ -44,7 +44,7 @@ const botoncuadrado13 = document.querySelector('.boton6');
 
 botoncuadrado13.addEventListener("click", () => {
 
-window.location.href = "mail.html"
+window.location.href = "cambiar.html"
 });
 
 const botoncuadrado14 = document.querySelector('.boton7');
