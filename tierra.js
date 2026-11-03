@@ -87,12 +87,11 @@ const grafico = new Chart(document.getElementById('grafico'), {
 
 
 function dibujar() {
-    console.log("Ejecutando dibujar(), métrica actual:", metricaActual);
   const cfg = METRICAS[metricaActual];
   if (!cfg) return;
 
 
- grafico.data.labels = historial.map(d => {
+grafico.data.labels = historial.map(d => {
   const f = new Date(d.timestamp);
   const hora = f.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false });
   if (horasActual > 24) {
@@ -211,7 +210,7 @@ function actualizarTarjetas(d) {
   document.getElementById('temp-suelo').textContent = fmt(d.suelo?.temperatura);
 
 
-  // Luz: día 50-100, tarde 20-50, noche 0-20
+
   const luz = d.luz;
   document.getElementById('luz-valor').textContent = fmt(luz);
   const luzBadge = document.getElementById('luz-badge');
@@ -225,7 +224,7 @@ function actualizarTarjetas(d) {
   }
 
 
-  // pH: escala 0-14
+
   const ph = d.ph;
   document.getElementById('ph-valor').textContent = fmt(ph);
   const phBadge = document.getElementById('ph-badge');
@@ -359,6 +358,9 @@ botoncuadrado1.addEventListener("click", () => {
 });
 
 
-
+const nombreGuardado = localStorage.getItem("nombreUsuario");
+  if (nombreGuardado) {
+    document.getElementById("nombre-usuario").textContent = nombreGuardado;
+  }
 
 
