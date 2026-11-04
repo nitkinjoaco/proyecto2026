@@ -263,8 +263,8 @@ font-family: "Inter", sans-serif;
     height: 15.62vh;
     opacity: 0.9;
     background-color: lightgray;
-    margin-left: 36rem;
-    margin-top: -30.5vh;
+    margin-left: 37rem;
+    margin-top: -31vh;
     display: none;
 }
 .cuadrado15.mostrar{
@@ -472,7 +472,7 @@ font-family: "Inter", sans-serif;
          .cuadrado16{
            position: relative;
               width: 95%;
-              height: 22rem;          
+              height: 19rem;          
               margin: 5rem auto 0;      
               background-color: #303430;
               opacity: 0.96;
@@ -549,7 +549,7 @@ font-family: "Inter", sans-serif;
 .grafico-contenedor {
   clear: both;
   position: relative;
-  height: 7vh;
+  height: 8vh;
   padding: 1rem 1rem 0;
   margin-top: 10rem;
 }
