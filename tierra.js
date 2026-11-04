@@ -116,7 +116,7 @@ grafico.data.labels = historial.map(d => {
 
   grafico.options.scales.y.min = undefined;
 grafico.options.scales.y.max = undefined;
-  grafico.options.scales.y.ticks.callback = v => v + cfg.unidad;
+grafico.options.scales.y.ticks.callback = v => Number(v.toFixed(1)) + cfg.unidad;
 
 
   document.querySelector('.leyenda').innerHTML = cfg.series
