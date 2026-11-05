@@ -32,7 +32,7 @@ botoncuadrado14.addEventListener("click", () => {
 })
 
 const boton = document.querySelector('.boton5');
-const cuadrado = document.querySelector('.cuadrado14');
+const cuadrado = document.querySelector('.cuadrado15');
 
 boton.addEventListener('click', () => {
     if (cuadrado.classList.contains('mostrar')) {
