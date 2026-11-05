@@ -73,7 +73,7 @@ body {
 .terrasense {
   margin: 0;
   font-size: 1rem;
-  color: #000;
+  color: black;
   white-space: nowrap;
 }
 
@@ -89,7 +89,7 @@ body {
   border: none;
   border-bottom: 0.25rem solid transparent;
   padding: 0.5rem 0.25rem;
-  color: #000;
+  color: black;
   font-size: clamp(0.85rem, 1.2vw, 1.05rem);
   font-weight: 700;
   white-space: nowrap;
@@ -110,7 +110,9 @@ body {
   border-radius: 0.5rem;
   outline: none;
 }
-.boton5:active { transform: scale(0.95); }
+.boton5:active { 
+  transform: scale(0.95);
+ }
 .iconousuario {
   display: block;
   width: 1.8rem;
@@ -131,13 +133,17 @@ body {
   box-shadow: none;
   z-index: 20;
 }
-.cuadrado15.mostrar { display: flex; }
+.cuadrado15.mostrar { 
+  display: flex; 
+}
 
-.noombre { margin: 0; }
+.noombre {
+   margin: 0; 
+  }
 .nombreusuario {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #000;
+  color: black;
 }
 .menu-fila {
   display: flex;
@@ -153,11 +159,13 @@ body {
   background: none;
   border: none;
   padding: 0;
-  color: #000;
+  color: black;
   font-size: 0.85rem;
   white-space: nowrap;
 }
-.boton6:hover, .boton7:hover { text-decoration: underline; }
+.boton6:hover, .boton7:hover { 
+  text-decoration: underline; 
+}
 .cuadrado2 {
     width: 85vw;
     max-width: 120rem;
