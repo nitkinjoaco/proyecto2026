@@ -94,7 +94,7 @@ body {
   border-bottom: 0.25rem solid transparent;
   padding: 0.5rem 0.4rem;
   color: black;
-  font-size: clamp(1.2rem, 1.2vw, 1.5rem);
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
   font-weight: bold;
   white-space: nowrap;
   cursor: default;
