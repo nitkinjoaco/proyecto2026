@@ -358,6 +358,21 @@ botoncuadrado1.addEventListener("click", () => {
 });
 
 
+const botoncuadrado13 = document.querySelector('.boton6');
+
+botoncuadrado13.addEventListener("click", () => {
+
+window.location.href = "cambiar.html"
+});
+
+const botoncuadrado14 = document.querySelector('.boton7');
+
+botoncuadrado14.addEventListener("click", () => {
+
+    window.location.href = "wireframe.html"
+})
+
+
 const nombreGuardado = localStorage.getItem("nombreUsuario");
   if (nombreGuardado) {
     document.getElementById("nombre-usuario").textContent = nombreGuardado;

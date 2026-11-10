@@ -112,9 +112,15 @@ body {
   border-radius: 0.5rem;
   outline: none;
 }
+
 .boton5:active {
    transform: scale(0.95); 
   }
+
+.boton5:active { 
+  transform: scale(0.95);
+ }
+
 .iconousuario {
   display: block;
   width: 2.2rem;
@@ -135,6 +141,7 @@ body {
   box-shadow: none;
   z-index: 20;
 }
+
 .cuadrado15.mostrar {
    display: flex; 
   }
@@ -142,6 +149,15 @@ body {
 .noombre { 
   margin: 0;
  }
+
+.cuadrado15.mostrar { 
+  display: flex; 
+}
+
+.noombre {
+   margin: 0; 
+  }
+
 .nombreusuario {
   font-size: 0.95rem;
   font-weight: 600;
@@ -167,7 +183,15 @@ body {
 }
 .boton6:hover, .boton7:hover {
    text-decoration: underline; 
-  }
+  
+
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.boton6:hover, .boton7:hover { 
+  text-decoration: underline; 
+}
+
 .cuadrado2 {
     width: 85vw;
     max-width: 120rem;
