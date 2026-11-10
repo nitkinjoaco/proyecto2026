@@ -1,12 +1,10 @@
-* {
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html {
-    font-size: 62.5%;
-}
+
 
 body {
     font-family: "Inter", sans-serif;
@@ -66,8 +64,8 @@ body {
   padding-bottom: 0.5rem;
 }
 .imagenlogo {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
 }
 .terrasense {
@@ -75,6 +73,7 @@ body {
   font-size: 1rem;
   color: black;
   white-space: nowrap;
+  font-weight: 300;
 }
 
 .nav {
@@ -88,7 +87,7 @@ body {
   background: none;
   border: none;
   border-bottom: 0.25rem solid transparent;
-  padding: 0.3rem 0.25rem;
+  padding: 0.5rem 0.25rem;
   color: black;
   font-size: clamp(0.85rem, 1.2vw, 1.05rem);
   font-weight: 700;
@@ -121,8 +120,8 @@ body {
 
 .iconousuario {
   display: block;
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 2.4rem;
+  height: 2.4rem;
 }
 
 .cuadrado15 {
@@ -148,16 +147,10 @@ body {
   margin: 0;
  }
 
-.cuadrado15.mostrar { 
-  display: flex; 
-}
 
-.noombre {
-   margin: 0; 
-  }
 
 .nombreusuario {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: black;
 }
@@ -176,18 +169,11 @@ body {
   border: none;
   padding: 0;
   color: black;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   white-space: nowrap;
 }
 .boton6:hover, .boton7:hover {
    text-decoration: underline; 
-  
-
-  font-size: 0.85rem;
-  white-space: nowrap;
-}
-.boton6:hover, .boton7:hover { 
-  text-decoration: underline; 
 }
 
 .cuadrado2 {

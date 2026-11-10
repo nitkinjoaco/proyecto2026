@@ -1,15 +1,20 @@
-*, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after {
+   box-sizing: border-box;
+   }
 
 body {
   margin: 0;
   min-height: 100vh;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
-  color: #111;
+  color: black;
   background: #555;
 }
 
-button { font-family: inherit; cursor: default; }
+button { 
+  font-family: inherit; cursor: default;
+}
+ 
 
 .fondo {
   position: fixed;
@@ -43,8 +48,8 @@ button { font-family: inherit; cursor: default; }
   padding-bottom: 0.5rem;
 }
 .imagenlogo {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
 }
 .terrasense {
@@ -52,6 +57,7 @@ button { font-family: inherit; cursor: default; }
   font-size: 1rem;
   color: black;
   white-space: nowrap;
+  font-weight: 300;
 }
 
 .nav {
@@ -94,8 +100,8 @@ button { font-family: inherit; cursor: default; }
 }
 .iconousuario {
   display: block;
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 2.4rem;
+  height: 2.4rem;
 }
 
 .cuadrado15 {
@@ -183,7 +189,9 @@ button { font-family: inherit; cursor: default; }
   border-radius: 50%;
   background: #8bd43a;
 }
-.punto.viejo { background: #e0705a; }
+.punto.viejo {
+   background: #e0705a;
+   }
 
 .cuadrado16 {
   position: relative;
@@ -286,10 +294,11 @@ button { font-family: inherit; cursor: default; }
 body.desconectado .aviso-desconectado { 
   display: flex;
  }
-body.desconectado .badge,
-body.desconectado .marcador {
+
+body.desconectado .badge, body.desconectado .marcador {
    display: none;
    }
+
 body.desconectado .punto { 
   background: #e0705a;
  }
