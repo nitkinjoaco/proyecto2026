@@ -41,7 +41,7 @@ body {
   z-index: -1;
 }
 
-.barra-superior {
+.barrasuperior {
   position: fixed;
   top: 0;
   left: 0;
@@ -55,7 +55,6 @@ body {
   min-height: 4.5rem;
   padding: 0 4vw;
   background: lightgray;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -72,10 +71,9 @@ body {
 }
 
 .terrasense {
-  margin: 0;
   font-size: 1rem;
   font-weight: 300;
-  color: #000;
+  color: black;
   white-space: nowrap;
 }
 
@@ -115,7 +113,6 @@ body {
   background: none;
   border: none;
   padding: 0.5rem;
-  border-radius: 0.5rem;
   outline: none;
 }
 .boton5:active { 
@@ -175,17 +172,9 @@ body {
   text-decoration: underline;
  }
 
-.contenido {
-  width: 100%;
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: clamp(1rem, 4vh, 2.5rem) clamp(1rem, 3.5vw, 3rem) 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
 
-.contenedor-principal {
+
+.contenedorprincipal {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

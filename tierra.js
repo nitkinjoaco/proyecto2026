@@ -24,22 +24,22 @@ const METRICAS = {
       { campo: 'aire', subcampo: 'humedad', nombre: 'Aire', color: '#c7d9f5' },
       { campo: 'suelo', subcampo: 'humedad', nombre: 'Suelo', color: '#4caf2a' },
     ],
-    min: 40, max: 100, unidad: '%',
+   unidad: '%',
   },
   temperatura: {
     series: [
       { campo: 'aire', subcampo: 'temperatura', nombre: 'Aire', color: '#c7d9f5' },
       { campo: 'suelo', subcampo: 'temperatura', nombre: 'Suelo', color: '#4caf2a' },
     ],
-    min: 0, max: 40, unidad: '°',
+  unidad: '°',
   },
   luz: {
     series: [{ campo: 'luz', nombre: 'Luz', color: '#f5c542' }],
-    min: 0, max: 100, unidad: '',
+ unidad: '',
   },
   ph: {
     series: [{ campo: 'ph', nombre: 'pH', color: '#e0705a' }],
-    min: 0, max: 14, unidad: '',
+    unidad: '',
   },
 };
 
@@ -264,10 +264,7 @@ aplicarEstado();
 
 
 cargarActual();
-setInterval(() => {
-  actualizarUltimaLectura();
-  aplicarEstado();
-}, 30000);
+
 
 
 
@@ -316,7 +313,7 @@ function aplicarEstado() {
     });
 }
 
-
+setInterval(cargarActual, 10000);
 setInterval(actualizarUltimaLectura, 30000);
 
 

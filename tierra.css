@@ -28,7 +28,7 @@ button {
   object-fit: cover;
 }
 
-.barra-superior {
+.barrasuperior {
   position: relative;
   z-index: 10;
   display: flex;
@@ -122,7 +122,9 @@ button {
    display: flex; 
   }
 
-.noombre { margin: 0; }
+.noombre { 
+  margin: 0; 
+}
 .nombreusuario {
   font-size: 0.85rem;
   font-weight: 600;
@@ -142,7 +144,7 @@ button {
   background: none;
   border: none;
   padding: 0;
-  color: #000;
+  color: black;
   font-size: 0.85rem;
   white-space: nowrap;
 }
@@ -235,9 +237,7 @@ button {
   padding: 0.4rem 0.8rem;
   border-radius: 99rem;
 }
-.tabs button:hover, .rango button:hover { 
-  color: white;
- }
+
 .tabs button.activo, .rango button.activo {
   background: white;
   color: black;
@@ -257,7 +257,7 @@ button {
   width: 0.5rem;
   height: 0.5rem;
   margin-right: 0.4rem;
-  border-radius: 2px;
+  border-radius: 0.125rem;
   background: var(--c);
 }
 
@@ -357,7 +357,7 @@ body.desconectado .punto {
   line-height: 1.1;
 }
 .u {
-  margin-left: 2px;
+  margin-left: 0.125rem;
   font-size: 1rem;
   font-weight: 700;
   color: #888;
@@ -393,15 +393,15 @@ body.desconectado .punto {
 }
 
 .icono-tarjeta svg.ph1 { 
-  left: 38.7%; top: 16.1%; width: 35.5% !important; height: 35.5% !important; 
+  left: 38.7%; top: 16.1%; width: 35.5% ; height: 35.5% ; 
 }
 
 .icono-tarjeta svg.ph2 { 
-  left: 16.1%; top: 48.4%; width: 22.6% !important; height: 22.6% !important;
+  left: 16.1%; top: 48.4%; width: 22.6% ; height: 22.6% ;
  }
 
 .icono-tarjeta svg.ph3 {
-   left: 48.4%; top: 67.7%; width: 12.9% !important; height: 12.9% !important;
+   left: 48.4%; top: 67.7%; width: 12.9% ; height: 12.9% ;
    }
 
 .badge.dia      {
